@@ -66,7 +66,7 @@ export default function ActividadesPage() {
                     className="w-full px-4 py-2 rounded-lg border border-[var(--secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] bg-white text-[var(--primary)] mb-4 shadow"
                 />
             </header>
-            <main className="w-full max-w-2xl bg-[var(--secondary)] rounded-xl shadow-lg p-6 flex flex-col gap-6">
+            <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
                 {loading ? (
                     <div className="text-center text-[var(--secondary)]">Cargando actividades...</div>
                 ) : error ? (
