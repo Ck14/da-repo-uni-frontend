@@ -96,7 +96,7 @@ export default function Home() {
             className="mt-4 w-full sm:w-auto px-6 py-3 bg-[var(--accent)] hover:bg-[var(--highlight)] text-[var(--paper)] font-semibold rounded-lg shadow transition-colors text-lg cursor-pointer"
             onClick={() => router.push('/programas')}
           >
-            Elegir programa
+            ¡Vamos a investigar más!
           </button>
         </main>
         <footer className="mt-10 text-center text-[var(--paper)] text-sm opacity-80">
