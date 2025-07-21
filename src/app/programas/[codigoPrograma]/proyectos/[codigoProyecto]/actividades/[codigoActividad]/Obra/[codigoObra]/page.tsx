@@ -62,7 +62,7 @@ export default function RenglonesPage() {
         <>
             <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
                 <h2 className="relative text-4xl sm:text-3xl font-extrabold font-sans text-[var(--highlight)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
-                    OBRAS: {nombreObra}
+                    OBRA: {nombreObra}
                     <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--highlight)]"></span>
                 </h2>
                 <input
@@ -86,17 +86,33 @@ export default function RenglonesPage() {
                             renglonesFiltrados.map((r) => (
                                 <div
                                     key={r.codigoRenglon}
-                                    className="flex flex-col sm:flex-row sm:items-center justify-between bg-[var(--paper)] rounded-lg p-4 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
+                                    className="flex flex-col gap-2 bg-[var(--paper)] rounded-lg p-6 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
                                     role="button"
                                     tabIndex={0}
                                 >
-                                    <div className="flex-1">
-                                        <span className="font-semibold text-[var(--primary)] text-lg">{r.renglon}</span>
-                                        <div className="text-sm text-[var(--secondary)] mt-1">Código: {r.codigoRenglon}</div>
-                                        <div className="text-sm text-[var(--secondary)]">Presupuesto vigente: Q{r.vigente.toLocaleString()}</div>
-                                        <div className="text-sm text-[var(--secondary)]">Ejecutado: Q{r.devengado.toLocaleString()} ({calcularPorcentajeEjecutado(r).toFixed(1)}%)</div>
+                                    {/* Encabezado */}
+                                    <div className="flex flex-col items-start mb-2">
+                                        <span className="font-bold text-xl text-[var(--primary)] leading-tight">{r.renglon}</span>
+                                        <span className="text-xs text-[var(--secondary)]">Código: {r.codigoRenglon}</span>
                                     </div>
-                                    <div className="mt-2 sm:mt-0 sm:ml-6 w-full sm:w-40">
+                                    {/* Montos */}
+                                    <div className="flex flex-row justify-center items-end gap-8 mb-4">
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
+                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{r.vigente.toLocaleString()}</span>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
+                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{r.devengado.toLocaleString()}</span>
+                                        </div>
+                                    </div>
+                                    {/* Barra y porcentaje */}
+                                    <div className="relative w-full flex flex-col items-center mt-2">
+                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
+                                            <span className="bg-white border border-[var(--highlight)] text-[var(--highlight)] font-bold px-3 py-1 rounded-full shadow text-sm">
+                                                {calcularPorcentajeEjecutado(r).toFixed(1)}%
+                                            </span>
+                                        </div>
                                         <div className="w-full bg-[var(--highlight)]/30 rounded-full h-3">
                                             <div
                                                 className="bg-[var(--accent)] h-3 rounded-full transition-all"

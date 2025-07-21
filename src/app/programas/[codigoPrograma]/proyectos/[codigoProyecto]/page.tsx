@@ -79,19 +79,35 @@ export default function ActividadesPage() {
                             actividadesFiltradas.map((a) => (
                                 <div
                                     key={a.codigoActividad}
-                                    className="flex flex-col sm:flex-row sm:items-center justify-between bg-[var(--paper)] rounded-lg p-4 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
+                                    className="flex flex-col gap-2 bg-[var(--paper)] rounded-lg p-6 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
                                     onClick={() => router.push(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${a.codigoActividad}`)}
                                     role="button"
                                     tabIndex={0}
                                     onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') router.push(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${a.codigoActividad}`); }}
                                 >
-                                    <div className="flex-1">
-                                        <span className="font-semibold text-[var(--primary)] text-lg">{a.actividad}</span>
-                                        <div className="text-sm text-[var(--secondary)] mt-1">Código: {a.codigoActividad}</div>
-                                        <div className="text-sm text-[var(--secondary)]">Presupuesto vigente: Q{a.vigente.toLocaleString()}</div>
-                                        <div className="text-sm text-[var(--secondary)]">Ejecutado: Q{a.devengado.toLocaleString()} ({calcularPorcentajeEjecutado(a).toFixed(1)}%)</div>
+                                    {/* Encabezado */}
+                                    <div className="flex flex-col items-start mb-2">
+                                        <span className="font-bold text-xl text-[var(--primary)] leading-tight">{a.actividad}</span>
+                                        <span className="text-xs text-[var(--secondary)]">Código: {a.codigoActividad}</span>
                                     </div>
-                                    <div className="mt-2 sm:mt-0 sm:ml-6 w-full sm:w-40">
+                                    {/* Montos */}
+                                    <div className="flex flex-row justify-center items-end gap-8 mb-4">
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
+                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{a.vigente.toLocaleString()}</span>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
+                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{a.devengado.toLocaleString()}</span>
+                                        </div>
+                                    </div>
+                                    {/* Barra y porcentaje */}
+                                    <div className="relative w-full flex flex-col items-center mt-2">
+                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
+                                            <span className="bg-white border border-[var(--highlight)] text-[var(--highlight)] font-bold px-3 py-1 rounded-full shadow text-sm">
+                                                {calcularPorcentajeEjecutado(a).toFixed(1)}%
+                                            </span>
+                                        </div>
                                         <div className="w-full bg-[var(--highlight)]/30 rounded-full h-3">
                                             <div
                                                 className="bg-[var(--accent)] h-3 rounded-full transition-all"
