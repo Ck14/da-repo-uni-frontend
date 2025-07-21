@@ -61,48 +61,41 @@ export default function Home() {
     .slice(0, 5);
 
   return (
-    <div className="relative min-h-screen bg-[url('/fondo.jpg')] bg-repeat bg-center bg-[length:480px_360px] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden">
-      <div className="absolute inset-0 bg-[var(--accent-light)]/80 pointer-events-none z-0" aria-hidden="true"></div>
-      <div className="relative z-10 w-full flex flex-col items-center">
-        <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
-          <h1 className="relative text-4xl sm:text-5xl font-extrabold font-sans text-[var(--highlight)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
-
-            Estadísticas de Gastos Municipales
-            <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--highlight)]"></span>
-          </h1>
-          <p className="text-lg text-[var(--paper)] text-center">Top 5 programas con mayor presupuesto vigente y menor porcentaje de ejecución</p>
-        </header>
-        <main className="w-full max-w-2xl bg-[var(--secondary)] rounded-xl shadow-lg p-6 flex flex-col gap-6">
-          <ol className="space-y-4">
-            {top5.map((p, idx) => (
-              <li key={p.id} className="flex flex-col sm:flex-row sm:items-center justify-between bg-[var(--paper)] rounded-lg p-4 shadow-sm hover:scale-[1.01] transition-transform">
-                <div className="flex-1">
-                  <span className="font-semibold text-[var(--primary)] text-lg">{idx + 1}. {p.nombre}</span>
-                  <div className="text-sm text-[var(--secondary)] mt-1">Presupuesto: Q{p.presupuesto.toLocaleString()}</div>
-                  <div className="text-sm text-[var(--secondary)]">Ejecutado: Q{p.ejecutado.toLocaleString()} ({calcularPorcentajeEjecutado(p).toFixed(1)}%)</div>
+    <>
+      <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
+        <h1 className="relative text-4xl sm:text-5xl font-extrabold font-sans text-[var(--highlight)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
+          Estadísticas de Gastos Municipales
+          <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--highlight)]"></span>
+        </h1>
+        <p className="text-lg text-[var(--paper)] text-center">Top 5 programas con mayor presupuesto vigente y menor porcentaje de ejecución</p>
+      </header>
+      <main className="w-full max-w-2xl bg-[var(--secondary)] rounded-xl shadow-lg p-6 flex flex-col gap-6">
+        <ol className="space-y-4">
+          {top5.map((p, idx) => (
+            <li key={p.id} className="flex flex-col sm:flex-row sm:items-center justify-between bg-[var(--paper)] rounded-lg p-4 shadow-sm hover:scale-[1.01] transition-transform">
+              <div className="flex-1">
+                <span className="font-semibold text-[var(--primary)] text-lg">{idx + 1}. {p.nombre}</span>
+                <div className="text-sm text-[var(--secondary)] mt-1">Presupuesto: Q{p.presupuesto.toLocaleString()}</div>
+                <div className="text-sm text-[var(--secondary)]">Ejecutado: Q{p.ejecutado.toLocaleString()} ({calcularPorcentajeEjecutado(p).toFixed(1)}%)</div>
+              </div>
+              <div className="mt-2 sm:mt-0 sm:ml-6 w-full sm:w-40">
+                <div className="w-full bg-[var(--highlight)]/30 rounded-full h-3">
+                  <div
+                    className="bg-[var(--accent)] h-3 rounded-full transition-all"
+                    style={{ width: `${calcularPorcentajeEjecutado(p)}%` }}
+                  ></div>
                 </div>
-                <div className="mt-2 sm:mt-0 sm:ml-6 w-full sm:w-40">
-                  <div className="w-full bg-[var(--highlight)]/30 rounded-full h-3">
-                    <div
-                      className="bg-[var(--accent)] h-3 rounded-full transition-all"
-                      style={{ width: `${calcularPorcentajeEjecutado(p)}%` }}
-                    ></div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <button
-            className="mt-4 w-full sm:w-auto px-6 py-3 bg-[var(--accent)] hover:bg-[var(--highlight)] text-[var(--paper)] font-semibold rounded-lg shadow transition-colors text-lg cursor-pointer"
-            onClick={() => router.push('/programas')}
-          >
-            ¡Vamos a investigar más!
-          </button>
-        </main>
-        <footer className="mt-10 text-center text-[var(--paper)] text-sm opacity-80">
-          Antigua Devs &copy; {new Date().getFullYear()}
-        </footer>
-      </div>
-    </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <button
+          className="mt-4 w-full sm:w-auto px-6 py-3 bg-[var(--accent)] hover:bg-[var(--highlight)] text-[var(--paper)] font-semibold rounded-lg shadow transition-colors text-lg cursor-pointer"
+          onClick={() => router.push('/programas')}
+        >
+          ¡Vamos a investigar más!
+        </button>
+      </main>
+    </>
   );
 }

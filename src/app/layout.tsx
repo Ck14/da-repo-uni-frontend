@@ -29,6 +29,9 @@ export default function RootLayout({
           <div className="absolute inset-0 bg-[var(--accent-light)]/80 pointer-events-none z-0" aria-hidden="true"></div>
           <div className="relative z-10 w-full flex flex-col items-center">
             {children}
+            <footer className="mt-10 text-center text-[var(--paper)] text-sm opacity-80">
+              Antigua Devs &copy; {new Date().getFullYear()}
+            </footer>
           </div>
         </div>
       </body>

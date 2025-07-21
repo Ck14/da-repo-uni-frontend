@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -10,6 +11,19 @@
   --highlight: #5BC86D;
   --paper: #F6EFE4;
 }
+
+
+/*
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #081536;
+  --secondary: #303747;
+  --accent: #F24C3D;
+  --highlight: #F7CA40;
+  --paper: #F3F3F5;
+}*/
+
 
 @theme inline {
   --color-background: var(--background);
