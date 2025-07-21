@@ -110,6 +110,14 @@ export default function RenglonesPage() {
                     </div>
                 )}
             </main>
+            <button
+                onClick={() => router.back()}
+                className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 bg-[var(--highlight)] text-white rounded-full shadow-2xl px-7 py-4 text-xl font-bold hover:bg-[var(--accent)] transition-colors focus:outline-none focus:ring-4 focus:ring-[var(--highlight)]/50 active:scale-95"
+                style={{ minWidth: 56, minHeight: 56 }}
+                aria-label="Volver atrás"
+            >
+                ⬅ Volver
+            </button>
         </>
     );
 } 
