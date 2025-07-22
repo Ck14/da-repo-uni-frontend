@@ -63,7 +63,7 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3100/query/estadisticas/top5-programas-menor-ejecucion")
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/query/estadisticas/top5-programas-menor-ejecucion`)
       .then((res) => res.json())
       .then((data) => {
         setProgramas(data);
@@ -82,9 +82,9 @@ export default function Home() {
   return (
     <>
       <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
-        <h1 className="relative text-4xl sm:text-5xl font-extrabold font-sans text-[var(--highlight)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
+        <h1 className="relative text-4xl sm:text-5xl font-extrabold font-sans text-[var(--paper)]  text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
           Estadísticas de Gastos Municipales
-          <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--highlight)]"></span>
+          <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--paper)]"></span>
         </h1>
         <p className="text-lg text-[var(--paper)] text-center">Top 5 programas con mayor presupuesto vigente y menor porcentaje de ejecución</p>
       </header>

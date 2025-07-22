@@ -25,8 +25,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="relative min-h-screen bg-[url('/fondo.jpg')] bg-repeat bg-center bg-[length:480px_360px] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden">
-          <div className="absolute inset-0 bg-[var(--accent-light)]/80 pointer-events-none z-0" aria-hidden="true"></div>
+        <div className="relative min-h-screen bg-[url('/fondo.jpg')] bg-repeat bg-center bg-[length:300px_260px] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden">
+
           <div className="relative z-10 w-full flex flex-col items-center">
             {children}
             <footer className="mt-10 text-center text-[var(--paper)] text-sm opacity-80">

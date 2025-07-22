@@ -32,7 +32,7 @@ export default function ActividadesPage() {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:3100/query/actividades?codigoPrograma=${codigoPrograma}&codigoProyecto=${codigoProyecto}`)
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/query/actividades?codigoPrograma=${codigoPrograma}&codigoProyecto=${codigoProyecto}`)
             .then((res) => res.json())
             .then((data) => {
                 setActividades(data);
@@ -54,9 +54,9 @@ export default function ActividadesPage() {
     return (
         <>
             <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
-                <h2 className="relative text-4xl sm:text-3xl font-extrabold font-sans text-[var(--highlight)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
+                <h2 className="relative text-4xl sm:text-3xl font-extrabold font-sans text-[var(--paper)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
                     PROYECTO: {nombreProyecto}
-                    <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--highlight)]"></span>
+                    <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--paper)]"></span>
                 </h2>
                 <input
                     type="text"

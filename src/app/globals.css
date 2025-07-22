@@ -7,14 +7,14 @@
 
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #0B0504;
-  --secondary: #37A4A4;
-  --accent: #7E2A6C;
-  --accent-light: #55004379;
-  --highlight: #5BC86D;
-  --paper: #F6EFE4;
+  --background: #E6FFC2;
+  --foreground: #001A6E;
+  --primary: #001A6E;
+  --secondary: #0853A5;
+  --accent: #00A6A6;
+  --accent-light: #00A6A6;
+  --highlight: #0853A5;
+  --paper: #ffffff;
 }
 
 
