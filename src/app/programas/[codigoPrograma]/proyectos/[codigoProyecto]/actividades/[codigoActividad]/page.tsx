@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { BanknotesIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 
 interface Obra {
     codigoObra: number;
@@ -95,10 +96,12 @@ export default function ObrasPage() {
                                     {/* Montos */}
                                     <div className="flex flex-row justify-center items-end gap-8 mb-4">
                                         <div className="flex flex-col items-center">
+                                            <BanknotesIcon className="inline-block w-5 h-5 text-[var(--accent)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
                                             <span className="text-2xl font-extrabold text-[var(--accent)]">Q{o.vigente.toLocaleString()}</span>
                                         </div>
                                         <div className="flex flex-col items-center">
+                                            <ArrowDownTrayIcon className="inline-block w-5 h-5 text-[var(--highlight)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
                                             <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{o.devengado.toLocaleString()}</span>
                                         </div>

@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { InformationCircleIcon, CurrencyDollarIcon, ArrowTrendingUpIcon, GlobeAltIcon } from "@heroicons/react/24/solid";
+import { InformationCircleIcon, CurrencyDollarIcon, ArrowTrendingUpIcon, GlobeAltIcon, BanknotesIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 
 export default function AyudaPage() {
     const router = useRouter();
@@ -41,8 +41,14 @@ export default function AyudaPage() {
                         <div className="bg-[var(--accent-light)]/40 rounded p-4 my-2 text-[var(--primary)]">
                             <span className="font-semibold">Ejemplo:</span>
                             <div className="mt-2">
-                                <span className="inline-block mr-2">Presupuesto vigente: <span className="font-bold">Q100,000</span></span><br />
-                                <span className="inline-block mr-2">Ejecutado: <span className="font-bold">Q45,000</span></span><br />
+                                <span className="inline-block mr-2">
+                                    <BanknotesIcon className="inline-block w-5 h-5 text-[var(--accent)] mr-1 align-text-bottom" />
+                                    Presupuesto vigente: <span className="font-bold">Q100,000</span>
+                                </span><br />
+                                <span className="inline-block mr-2">
+                                    <ArrowDownTrayIcon className="inline-block w-5 h-5 text-[var(--highlight)] mr-1 align-text-bottom" />
+                                    Ejecutado: <span className="font-bold">Q45,000</span>
+                                </span><br />
                                 <span className="inline-block">Porcentaje de Ejecución: <span className="font-bold">(45,000 / 100,000) × 100 = 45%</span></span>
                             </div>
                         </div>
