@@ -83,11 +83,13 @@ export default function Home() {
   return (
     <>
       <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
-        <h1 className="relative text-4xl sm:text-5xl font-extrabold font-sans text-[var(--paper)]  text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
-          Estadísticas de Gastos Municipales
-          <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--paper)]"></span>
+        <h1 className="relative text-3xl sm:text-4xl font-extrabold font-sans text-[var(--paper)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
+          Municipalidad de Chimaltenango
+
         </h1>
-        <p className="text-lg text-[var(--paper)] text-center">Top 5 programas con mayor presupuesto vigente y menor porcentaje de ejecución</p>
+        <p className="text-2xl sm:text-2xl text-[var(--paper)] text-center font-semibold">Información Presupuestaria</p>
+        <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--paper)]"></span>
+        <p className="text-base sm:text-lg text-[var(--paper)] text-center font-normal mt-1">Top 5 programas con mayor presupuesto vigente y menor porcentaje de ejecución</p>
       </header>
       <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
         {loading ? (
