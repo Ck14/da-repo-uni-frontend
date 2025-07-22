@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { InformationCircleIcon, CurrencyDollarIcon, ArrowTrendingUpIcon, GlobeAltIcon } from "@heroicons/react/24/solid";
 
 export default function AyudaPage() {
     const router = useRouter();
@@ -10,7 +11,7 @@ export default function AyudaPage() {
             </h1>
             <div className="flex flex-col gap-6">
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
-                    <span className="text-4xl mr-2">💰</span>
+                    <CurrencyDollarIcon className="w-10 h-10 text-[var(--accent)] flex-shrink-0" />
                     <div>
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué es el Presupuesto Vigente?</h2>
                         <p className="text-[var(--primary)] font-medium">
@@ -19,7 +20,7 @@ export default function AyudaPage() {
                     </div>
                 </section>
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
-                    <span className="text-4xl mr-2">📤</span>
+                    <ArrowTrendingUpIcon className="w-10 h-10 text-[var(--highlight)] flex-shrink-0" />
                     <div>
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué es el Presupuesto Ejecutado?</h2>
                         <p className="text-[var(--primary)] font-medium">
@@ -28,7 +29,7 @@ export default function AyudaPage() {
                     </div>
                 </section>
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
-                    <span className="text-4xl mr-2">📊</span>
+                    <InformationCircleIcon className="w-10 h-10 text-[var(--primary)] flex-shrink-0" />
                     <div className="flex-1">
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué significa el Porcentaje de Ejecución?</h2>
                         <p className="text-[var(--primary)] font-medium">
@@ -51,7 +52,7 @@ export default function AyudaPage() {
                     </div>
                 </section>
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
-                    <span className="text-4xl mr-2">🌐</span>
+                    <GlobeAltIcon className="w-10 h-10 text-[var(--secondary)] flex-shrink-0" />
                     <div>
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿De dónde se obtienen los datos?</h2>
                         <p className="text-[var(--primary)] font-medium">
