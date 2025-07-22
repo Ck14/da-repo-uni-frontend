@@ -11,7 +11,7 @@ export default function AyudaPage() {
             </h1>
             <div className="flex flex-col gap-6">
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
-                    <CurrencyDollarIcon className="w-10 h-10 text-[var(--accent)] flex-shrink-0" />
+                    <BanknotesIcon className="w-10 h-10 text-[var(--accent)] flex-shrink-0" />
                     <div>
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué es el Presupuesto Vigente?</h2>
                         <p className="text-[var(--primary)] font-medium">
@@ -20,7 +20,7 @@ export default function AyudaPage() {
                     </div>
                 </section>
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
-                    <ArrowTrendingUpIcon className="w-10 h-10 text-[var(--highlight)] flex-shrink-0" />
+                    <ArrowDownTrayIcon className="w-10 h-10 text-[var(--highlight)] flex-shrink-0" />
                     <div>
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué es el Presupuesto Ejecutado?</h2>
                         <p className="text-[var(--primary)] font-medium">
