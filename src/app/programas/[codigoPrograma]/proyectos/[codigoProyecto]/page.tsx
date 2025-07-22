@@ -1,10 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
-interface Programa {
+interface Actividad {
+    codigoActividad: number;
+    actividad: string;
     codigoPrograma: number;
     programa: string;
+    codigoProyecto: number;
+    proyecto: string;
     asignado: number;
     modificado: number;
     vigente: number;
@@ -12,46 +16,51 @@ interface Programa {
     pagado: number;
 }
 
-export default function ProgramasPage() {
-    const [programas, setProgramas] = useState<Programa[]>([]);
+function calcularPorcentajeEjecutado(p: { vigente: number; devengado: number }) {
+    return (p.devengado / p.vigente) * 100;
+}
+
+export default function ActividadesPage() {
+    const router = useRouter();
+    const params = useParams();
+    const codigoPrograma = params.codigoPrograma;
+    const codigoProyecto = params.codigoProyecto;
+    const [actividades, setActividades] = useState<Actividad[]>([]);
     const [busqueda, setBusqueda] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-    const router = useRouter();
 
     useEffect(() => {
         setLoading(true);
-        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/query/programas`)
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/query/actividades?codigoPrograma=${codigoPrograma}&codigoProyecto=${codigoProyecto}`)
             .then((res) => res.json())
             .then((data) => {
-                setProgramas(data);
+                setActividades(data);
                 setLoading(false);
             })
             .catch(() => {
-                setError("No se pudieron cargar los programas.");
+                setError("No se pudieron cargar las actividades.");
                 setLoading(false);
             });
-    }, []);
+    }, [codigoPrograma, codigoProyecto]);
 
-    const programasOrdenados = [...programas].sort((a, b) => b.vigente - a.vigente);
-    const programasFiltrados = programasOrdenados.filter((p) =>
-        p.programa.toLowerCase().includes(busqueda.toLowerCase())
+    const actividadesOrdenadas = [...actividades].sort((a, b) => b.vigente - a.vigente);
+    const actividadesFiltradas = actividadesOrdenadas.filter((a) =>
+        a.actividad.toLowerCase().includes(busqueda.toLowerCase())
     );
 
-    function calcularPorcentajeEjecutado(p: { vigente: number; devengado: number }) {
-        return (p.devengado / p.vigente) * 100;
-    }
+    const nombreProyecto = actividades[0]?.proyecto || "";
 
     return (
         <>
             <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
-                <h2 className="text-4xl sm:text-5xl font-extrabold font-sans text-[var(--paper)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
-                    Programas
+                <h2 className="relative text-4xl sm:text-3xl font-extrabold font-sans text-[var(--paper)] text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] mb-2 tracking-tight">
+                    PROYECTO: {nombreProyecto}
                     <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--paper)]"></span>
                 </h2>
                 <input
                     type="text"
-                    placeholder="Buscar programa..."
+                    placeholder="Buscar actividad..."
                     value={busqueda}
                     onChange={(e) => setBusqueda(e.target.value)}
                     className="w-full px-4 py-2 rounded-lg border border-[var(--secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] bg-white text-[var(--primary)] mb-4 shadow"
@@ -59,50 +68,50 @@ export default function ProgramasPage() {
             </header>
             <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
                 {loading ? (
-                    <div className="text-center text-[var(--secondary)]">Cargando programas...</div>
+                    <div className="text-center text-[var(--secondary)]">Cargando actividades...</div>
                 ) : error ? (
                     <div className="text-center text-red-600">{error}</div>
                 ) : (
                     <div className="grid grid-cols-1 gap-6">
-                        {programasFiltrados.length === 0 ? (
-                            <div className="col-span-2 text-center text-[var(--secondary)]">No se encontraron programas.</div>
+                        {actividadesFiltradas.length === 0 ? (
+                            <div className="col-span-2 text-center text-[var(--secondary)]">No se encontraron actividades.</div>
                         ) : (
-                            programasFiltrados.map((p) => (
+                            actividadesFiltradas.map((a) => (
                                 <div
-                                    key={p.codigoPrograma}
+                                    key={a.codigoActividad}
                                     className="flex flex-col gap-2 bg-[var(--paper)] rounded-lg p-6 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
-                                    onClick={() => router.push(`/programas/${p.codigoPrograma}`)}
+                                    onClick={() => router.push(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${a.codigoActividad}`)}
                                     role="button"
                                     tabIndex={0}
-                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') router.push(`/programas/${p.codigoPrograma}`); }}
+                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') router.push(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${a.codigoActividad}`); }}
                                 >
                                     {/* Encabezado */}
                                     <div className="flex flex-col items-start mb-2">
-                                        <span className="font-bold text-xl text-[var(--primary)] leading-tight">{p.programa}</span>
-                                        <span className="text-xs text-[var(--secondary)]">Código: {p.codigoPrograma}</span>
+                                        <span className="font-bold text-xl text-[var(--primary)] leading-tight">{a.actividad}</span>
+                                        <span className="text-xs text-[var(--secondary)]">Código: {a.codigoActividad}</span>
                                     </div>
                                     {/* Montos */}
                                     <div className="flex flex-row justify-center items-end gap-8 mb-4">
                                         <div className="flex flex-col items-center">
                                             <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
-                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{p.vigente.toLocaleString()}</span>
+                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{a.vigente.toLocaleString()}</span>
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
-                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{p.devengado.toLocaleString()}</span>
+                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{a.devengado.toLocaleString()}</span>
                                         </div>
                                     </div>
                                     {/* Barra y porcentaje */}
                                     <div className="relative w-full flex flex-col items-center mt-2">
                                         <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
                                             <span className="bg-white border border-[var(--highlight)] text-[var(--highlight)] font-bold px-3 py-1 rounded-full shadow text-sm">
-                                                {calcularPorcentajeEjecutado(p).toFixed(1)}%
+                                                {calcularPorcentajeEjecutado(a).toFixed(1)}%
                                             </span>
                                         </div>
                                         <div className="w-full bg-[var(--highlight)]/30 rounded-full h-3">
                                             <div
                                                 className="bg-[var(--accent)] h-3 rounded-full transition-all"
-                                                style={{ width: `${calcularPorcentajeEjecutado(p)}%` }}
+                                                style={{ width: `${calcularPorcentajeEjecutado(a)}%` }}
                                             ></div>
                                         </div>
                                     </div>
