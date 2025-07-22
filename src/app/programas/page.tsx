@@ -60,7 +60,13 @@ export default function ProgramasPage() {
             </header>
             <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
                 {loading ? (
-                    <div className="text-center text-[var(--secondary)]">Cargando programas...</div>
+                    <div className="flex flex-col justify-center items-center min-h-[120px] gap-2">
+                        <svg className="animate-spin h-10 w-10 text-[var(--accent)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                        </svg>
+                        <span className="text-[var(--paper)] text-base font-medium mt-2">Consultando datos...</span>
+                    </div>
                 ) : error ? (
                     <div className="text-center text-red-600">{error}</div>
                 ) : (
