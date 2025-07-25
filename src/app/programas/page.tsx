@@ -89,16 +89,16 @@ export default function ProgramasPage() {
                                         <span className="text-xs text-[var(--secondary)]">Código: {p.codigoPrograma}</span>
                                     </div>
                                     {/* Montos */}
-                                    <div className="flex flex-row justify-center items-end gap-8 mb-4">
+                                    <div className="flex flex-row justify-center items-end gap-4 sm:gap-8 mb-4">
                                         <div className="flex flex-col items-center">
                                             <BanknotesIcon className="inline-block w-5 h-5 text-[var(--accent)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
-                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{p.vigente.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--accent)] break-words">Q{p.vigente.toLocaleString()}</span>
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <ArrowDownTrayIcon className="inline-block w-5 h-5 text-[var(--highlight)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
-                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{p.devengado.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--highlight)] break-words">Q{p.devengado.toLocaleString()}</span>
                                         </div>
                                     </div>
                                     {/* Barra y porcentaje */}

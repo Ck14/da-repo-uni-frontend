@@ -57,9 +57,9 @@ export default function AyudaPage() {
                         </p>
                     </div>
                 </section>
-                <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
+                <section className="bg-[var(--paper)] rounded-lg shadow p-4 md:p-8 flex flex-row gap-4 items-start">
                     <GlobeAltIcon className="w-10 h-10 text-[var(--secondary)] flex-shrink-0" />
-                    <div>
+                    <div className="min-w-0">
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿De dónde se obtienen los datos?</h2>
                         <p className="text-[var(--primary)] font-medium">
                             Los datos presentados en este sitio provienen de los sistemas oficiales de la Municipalidad de Chimaltenango y fuentes públicas de transparencia presupuestaria.
@@ -69,7 +69,7 @@ export default function AyudaPage() {
                             href="https://datos.minfin.gob.gt/group/presupuestos-municipales"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-2 text-[var(--accent)] underline font-semibold hover:text-[var(--highlight)]"
+                            className="mt-2 text-[var(--accent)] underline font-semibold hover:text-[var(--highlight)] break-words"
                         >
                             https://datos.minfin.gob.gt/group/presupuestos-municipales
                         </a>

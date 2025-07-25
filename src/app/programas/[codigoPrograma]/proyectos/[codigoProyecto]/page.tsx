@@ -98,16 +98,16 @@ export default function ActividadesPage() {
                                         <span className="text-xs text-[var(--secondary)]">Código: {a.codigoActividad}</span>
                                     </div>
                                     {/* Montos */}
-                                    <div className="flex flex-row justify-center items-end gap-8 mb-4">
+                                    <div className="flex flex-row justify-center items-end gap-4 sm:gap-8 mb-4">
                                         <div className="flex flex-col items-center">
                                             <BanknotesIcon className="inline-block w-5 h-5 text-[var(--accent)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
-                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{a.vigente.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--accent)] break-words">Q{a.vigente.toLocaleString()}</span>
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <ArrowDownTrayIcon className="inline-block w-5 h-5 text-[var(--highlight)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
-                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{a.devengado.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--highlight)] break-words">Q{a.devengado.toLocaleString()}</span>
                                         </div>
                                     </div>
                                     {/* Barra y porcentaje */}
