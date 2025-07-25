@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useParams } from "next/navigation";
-import { BanknotesIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+import { BanknotesIcon, ArrowDownTrayIcon, ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 interface Proyecto {
     codigoProyecto: number;
@@ -139,7 +139,7 @@ export default function ProyectosPage() {
                 className="fixed bottom-8 right-8 z-50 bg-[var(--accent)] text-white rounded-full shadow-2xl w-16 h-16 p-0 flex items-center justify-center text-2xl font-bold hover:bg-[var(--highlight)] transition-colors focus:outline-none focus:ring-4 focus:ring-[var(--highlight)]/50 active:scale-95"
                 aria-label="Volver atrás"
             >
-                ⬅
+                <ArrowLeftIcon className="w-8 h-8" />
             </button>
         </>
     );
