@@ -1,13 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { InformationCircleIcon, CurrencyDollarIcon, ArrowTrendingUpIcon, GlobeAltIcon, BanknotesIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+import { InformationCircleIcon, CurrencyDollarIcon, ArrowTrendingUpIcon, GlobeAltIcon, BanknotesIcon, ArrowDownTrayIcon, ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 export default function AyudaPage() {
     const router = useRouter();
     return (
         <main className="w-full max-w-4xl mx-auto bg-[var(--secondary)] rounded-xl shadow-lg p-6 mt-8 mb-8 flex flex-col gap-8">
             <h1 className="text-4xl font-extrabold text-[var(--paper)] mb-8 text-center tracking-tight flex items-center justify-center gap-4">
-                <span>🛈</span> Ayuda y Definiciones
+            <InformationCircleIcon className="w-12 h-12" /> Ayuda y Definiciones
             </h1>
             <div className="flex flex-col gap-6">
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
@@ -57,9 +57,9 @@ export default function AyudaPage() {
                         </p>
                     </div>
                 </section>
-                <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
+                <section className="bg-[var(--paper)] rounded-lg shadow p-4 md:p-8 flex flex-row gap-4 items-start">
                     <GlobeAltIcon className="w-10 h-10 text-[var(--secondary)] flex-shrink-0" />
-                    <div>
+                    <div className="min-w-0">
                         <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿De dónde se obtienen los datos?</h2>
                         <p className="text-[var(--primary)] font-medium">
                             Los datos presentados en este sitio provienen de los sistemas oficiales de la Municipalidad de Chimaltenango y fuentes públicas de transparencia presupuestaria.
@@ -69,7 +69,7 @@ export default function AyudaPage() {
                             href="https://datos.minfin.gob.gt/group/presupuestos-municipales"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-2 text-[var(--accent)] underline font-semibold hover:text-[var(--highlight)]"
+                            className="mt-2 text-[var(--accent)] underline font-semibold hover:text-[var(--highlight)] break-words"
                         >
                             https://datos.minfin.gob.gt/group/presupuestos-municipales
                         </a>
@@ -82,7 +82,7 @@ export default function AyudaPage() {
                 className="fixed bottom-8 right-8 z-50 bg-[var(--accent)] text-white rounded-full shadow-2xl w-16 h-16 p-0 flex items-center justify-center text-2xl font-bold hover:bg-[var(--highlight)] transition-colors focus:outline-none focus:ring-4 focus:ring-[var(--highlight)]/50 active:scale-95"
                 aria-label="Volver atrás"
             >
-                ⬅
+                <ArrowLeftIcon className="w-8 h-8" />
             </button>
         </main>
     );

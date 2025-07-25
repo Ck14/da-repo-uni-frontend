@@ -32,6 +32,7 @@ export default function ObrasPage() {
     const [busqueda, setBusqueda] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [navigating, setNavigating] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -54,6 +55,11 @@ export default function ObrasPage() {
 
     const nombreActividad = obras[0]?.actividad || "OTRAS";
 
+    const handleCardClick = (url: string) => {
+        setNavigating(true);
+        router.push(url);
+    };
+
     return (
         <>
             <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
@@ -70,7 +76,7 @@ export default function ObrasPage() {
                 />
             </header>
             <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
-                {loading ? (
+                {loading || navigating ? (
                     <div className="flex flex-col justify-center items-center min-h-[120px] gap-2">
                         <svg className="animate-spin h-10 w-10 text-[var(--accent)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -91,8 +97,8 @@ export default function ObrasPage() {
                                     className="flex flex-col gap-2 bg-[var(--paper)] rounded-lg p-6 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
                                     role="button"
                                     tabIndex={0}
-                                    onClick={() => router.push(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${codigoActividad}/Obra/${o.codigoObra}`)}
-                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') router.push(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${codigoActividad}/Obra/${o.codigoObra}`); }}
+                                    onClick={() => handleCardClick(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${codigoActividad}/Obra/${o.codigoObra}`)}
+                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleCardClick(`/programas/${codigoPrograma}/proyectos/${codigoProyecto}/actividades/${codigoActividad}/Obra/${o.codigoObra}`); }}
                                 >
                                     {/* Encabezado */}
                                     <div className="flex flex-col items-start mb-2">
@@ -100,16 +106,16 @@ export default function ObrasPage() {
                                         <span className="text-xs text-[var(--secondary)]">Código: {o.codigoObra}</span>
                                     </div>
                                     {/* Montos */}
-                                    <div className="flex flex-row justify-center items-end gap-8 mb-4">
+                                    <div className="flex flex-row justify-center items-end gap-4 sm:gap-8 mb-4">
                                         <div className="flex flex-col items-center">
                                             <BanknotesIcon className="inline-block w-5 h-5 text-[var(--accent)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
-                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{o.vigente.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--accent)] break-words">Q{o.vigente.toLocaleString()}</span>
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <ArrowDownTrayIcon className="inline-block w-5 h-5 text-[var(--highlight)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
-                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{o.devengado.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--highlight)] break-words">Q{o.devengado.toLocaleString()}</span>
                                         </div>
                                     </div>
                                     {/* Barra y porcentaje */}
