@@ -28,6 +28,7 @@ export default function ProyectosPage() {
     const [busqueda, setBusqueda] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [navigating, setNavigating] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -50,6 +51,11 @@ export default function ProyectosPage() {
 
     const nombrePrograma = proyectos[0]?.programa || "";
 
+    const handleCardClick = (url: string) => {
+        setNavigating(true);
+        router.push(url);
+    };
+
     return (
         <>
             <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
@@ -66,7 +72,7 @@ export default function ProyectosPage() {
                 />
             </header>
             <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
-                {loading ? (
+                {loading || navigating ? (
                     <div className="flex flex-col justify-center items-center min-h-[120px] gap-2">
                         <svg className="animate-spin h-10 w-10 text-[var(--accent)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -85,10 +91,10 @@ export default function ProyectosPage() {
                                 <div
                                     key={p.codigoProyecto}
                                     className="flex flex-col gap-2 bg-[var(--paper)] rounded-lg p-6 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
-                                    onClick={() => router.push(`/programas/${codigoPrograma}/proyectos/${p.codigoProyecto}`)}
+                                    onClick={() => handleCardClick(`/programas/${codigoPrograma}/proyectos/${p.codigoProyecto}`)}
                                     role="button"
                                     tabIndex={0}
-                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') router.push(`/programas/${codigoPrograma}/proyectos/${p.codigoProyecto}`); }}
+                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleCardClick(`/programas/${codigoPrograma}/proyectos/${p.codigoProyecto}`); }}
                                 >
                                     {/* Encabezado */}
                                     <div className="flex flex-col items-start mb-2">
