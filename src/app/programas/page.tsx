@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { BanknotesIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+import { BanknotesIcon, ArrowDownTrayIcon, ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 interface Programa {
     codigoPrograma: number;
@@ -18,6 +18,7 @@ export default function ProgramasPage() {
     const [busqueda, setBusqueda] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [navigating, setNavigating] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -43,6 +44,11 @@ export default function ProgramasPage() {
         return (p.devengado / p.vigente) * 100;
     }
 
+    const handleCardClick = (url: string) => {
+        setNavigating(true);
+        router.push(url);
+    };
+
     return (
         <>
             <header className="w-full max-w-2xl flex flex-col items-center gap-2 mb-8">
@@ -59,7 +65,7 @@ export default function ProgramasPage() {
                 />
             </header>
             <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
-                {loading ? (
+                {loading || navigating ? (
                     <div className="flex flex-col justify-center items-center min-h-[120px] gap-2">
                         <svg className="animate-spin h-10 w-10 text-[var(--accent)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -78,10 +84,10 @@ export default function ProgramasPage() {
                                 <div
                                     key={p.codigoPrograma}
                                     className="flex flex-col gap-2 bg-[var(--paper)] rounded-lg p-6 shadow-sm hover:scale-[1.01] transition-transform cursor-pointer border-2 border-transparent hover:border-[var(--highlight)]"
-                                    onClick={() => router.push(`/programas/${p.codigoPrograma}`)}
+                                    onClick={() => handleCardClick(`/programas/${p.codigoPrograma}`)}
                                     role="button"
                                     tabIndex={0}
-                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') router.push(`/programas/${p.codigoPrograma}`); }}
+                                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleCardClick(`/programas/${p.codigoPrograma}`); }}
                                 >
                                     {/* Encabezado */}
                                     <div className="flex flex-col items-start mb-2">
@@ -89,16 +95,16 @@ export default function ProgramasPage() {
                                         <span className="text-xs text-[var(--secondary)]">Código: {p.codigoPrograma}</span>
                                     </div>
                                     {/* Montos */}
-                                    <div className="flex flex-row justify-center items-end gap-8 mb-4">
+                                    <div className="flex flex-row justify-center items-end gap-4 sm:gap-8 mb-4">
                                         <div className="flex flex-col items-center">
                                             <BanknotesIcon className="inline-block w-5 h-5 text-[var(--accent)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Presupuesto vigente</span>
-                                            <span className="text-2xl font-extrabold text-[var(--accent)]">Q{p.vigente.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--accent)] break-words">Q{p.vigente.toLocaleString()}</span>
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <ArrowDownTrayIcon className="inline-block w-5 h-5 text-[var(--highlight)] mr-1 align-text-bottom" />
                                             <span className="text-xs text-[var(--secondary)]">Ejecutado</span>
-                                            <span className="text-2xl font-extrabold text-[var(--highlight)]">Q{p.devengado.toLocaleString()}</span>
+                                            <span className="text-lg sm:text-2xl font-extrabold text-[var(--highlight)] break-words">Q{p.devengado.toLocaleString()}</span>
                                         </div>
                                     </div>
                                     {/* Barra y porcentaje */}
@@ -126,7 +132,7 @@ export default function ProgramasPage() {
                 className="fixed bottom-8 right-8 z-50 bg-[var(--accent)] text-white rounded-full shadow-2xl w-16 h-16 p-0 flex items-center justify-center text-2xl font-bold hover:bg-[var(--highlight)] transition-colors focus:outline-none focus:ring-4 focus:ring-[var(--highlight)]/50 active:scale-95"
                 aria-label="Volver atrás"
             >
-                ⬅
+                <ArrowLeftIcon className="w-8 h-8" />
             </button>
         </>
     );
