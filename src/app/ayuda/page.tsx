@@ -7,7 +7,7 @@ export default function AyudaPage() {
     return (
         <main className="w-full max-w-4xl mx-auto bg-[var(--secondary)] rounded-xl shadow-lg p-6 mt-8 mb-8 flex flex-col gap-8">
             <h1 className="text-4xl font-extrabold text-[var(--paper)] mb-8 text-center tracking-tight flex items-center justify-center gap-4">
-                <span>🛈</span> Ayuda y Definiciones
+            <InformationCircleIcon className="w-12 h-12" /> Ayuda y Definiciones
             </h1>
             <div className="flex flex-col gap-6">
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
