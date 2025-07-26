@@ -95,7 +95,7 @@ export default function Home() {
         </h1>
         <p className="text-2xl sm:text-2xl text-[var(--paper)] text-center font-semibold">Información Presupuestaria</p>
         <span className="block mx-auto mt-2 w-24 h-1 rounded-full bg-[var(--paper)]"></span>
-        <p className="text-base sm:text-lg text-[var(--paper)] text-center font-normal mt-1">Top 5 programas con mayor presupuesto vigente y menor porcentaje de ejecución</p>
+        <p className="text-base sm:text-lg text-[var(--paper)] text-center font-normal mt-1">Top 5 de programas con mayor presupuesto vigente y menor porcentaje de ejecución</p>
       </header>
       <main className="w-full max-w-4xl bg-[var(--secondary)] rounded-xl shadow-lg p-4 sm:p-6 flex flex-col gap-6">
         {loading || navigating ? (
@@ -113,10 +113,7 @@ export default function Home() {
             {programas
               .slice()
               .sort((a, b) => {
-                if (b.vigente !== a.vigente) {
-                  return b.vigente - a.vigente;
-                }
-                return a.devengado - b.devengado;
+                return a.porcentajeEjecucion - b.porcentajeEjecucion;
               })
               .map((p, idx) => (
                 <li
