@@ -13,18 +13,18 @@ export default function AyudaPage() {
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
                     <BanknotesIcon className="w-10 h-10 text-[var(--accent)] flex-shrink-0" />
                     <div>
-                        <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué es el Presupuesto Vigente?</h2>
+                        <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Cuánto se tiene para gastar?</h2>
                         <p className="text-[var(--primary)] font-medium">
-                            Es el monto total de recursos asignados a un programa, proyecto, actividad u obra para el periodo actual, incluyendo modificaciones, ampliaciones o reducciones realizadas durante el año fiscal.
+                            Se define como <b>Presupuesto Vigente</b>, es el monto total de recursos asignados a un programa, proyecto, actividad u obra para el periodo actual, incluyendo modificaciones, ampliaciones o reducciones realizadas durante el año fiscal.
                         </p>
                     </div>
                 </section>
                 <section className="bg-[var(--paper)] rounded-lg shadow p-8 flex flex-row gap-4 items-start">
                     <ArrowDownTrayIcon className="w-10 h-10 text-[var(--highlight)] flex-shrink-0" />
                     <div>
-                        <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué es el Presupuesto Ejecutado?</h2>
+                        <h2 className="text-2xl font-bold text-[var(--primary)] mb-2">¿Qué se ha gastado al día de hoy?</h2>
                         <p className="text-[var(--primary)] font-medium">
-                            Es la cantidad de dinero que efectivamente se ha utilizado o gastado de ese presupuesto vigente, es decir, lo que ya se ha devengado en pagos, compras o inversiones.
+                            Se define como <b>Presupuesto Ejecutado</b>, es la cantidad de dinero que efectivamente se ha utilizado o gastado de ese presupuesto vigente, es decir, lo que ya se ha devengado en pagos, compras o inversiones.
                         </p>
                     </div>
                 </section>
