@@ -169,6 +169,24 @@ export default function Home() {
           </button>
         )}
       </main>
+      
+      {/* Leyenda sobre fiscalización ciudadana */}
+      <div className="w-full max-w-4xl mt-8 text-center">
+        <div className="bg-[var(--paper)]/10 backdrop-blur-sm rounded-lg p-6 border border-[var(--paper)]/20">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <svg className="w-6 h-6 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+            </svg>
+            <h3 className="text-xl font-bold text-[var(--paper)]">Fiscalización Ciudadana</h3>
+          </div>
+          <p className="text-[var(--paper)] text-lg leading-relaxed">
+            "El pueblo debe mantener los ojos abiertos para fiscalizar el uso de los recursos públicos. 
+            <br className="hidden sm:block" />
+            La transparencia es el pilar de la democracia y la participación ciudadana es nuestro derecho y deber."
+          </p>
+        </div>
+      </div>
     </>
   );
 }
