@@ -1,0 +1,14 @@
+# Archivo de configuración de entorno para HTTPS
+# Crear este archivo como .env.local en tu servidor
+
+# URL base de la API - IMPORTANTE: Usar HTTPS
+NEXT_PUBLIC_API_BASE_URL=https://chimaltransparente.org/api
+
+# Para desarrollo local (opcional)
+# NEXT_PUBLIC_API_BASE_URL=http://localhost:3100/api
+
+# Notas importantes:
+# 1. Este archivo debe llamarse .env.local
+# 2. Debe estar en la raíz del proyecto
+# 3. Después de crear/modificar este archivo, reiniciar la aplicación Next.js
+# 4. El valor debe usar HTTPS para evitar errores de Mixed Content 
